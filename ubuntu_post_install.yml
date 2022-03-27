@@ -1,0 +1,118 @@
+# Install Config
+api: 3
+name: Ubuntu
+author: Margreve Mike
+# Configuration
+config:
+  # Enabled Tasks
+  tasks:
+    update: true
+    upgrade: true
+    # Add Repos
+    # individual repos flags are mentioned under config.add_repo key
+    add_repo: true
+    # Add PPAs
+    ppa: false
+    # APT Packages
+    apt: true
+    # Whether to purge packages mentioned in config.purge key
+    purge: true
+    debs: false
+    binaries: false
+    snaps: true
+  # Repository Flags
+  add_repo:
+    bazel: false
+    brave_browser: false
+    chrome: false
+    docker: false
+    edge: false
+    element_io: false
+    gcsfuse: false
+    github: false
+    googlecloud: false
+    gvisor: false
+    hashicorp: false
+    mendeley: false
+    miniconda: false
+    neurodebian: false
+    podman: false
+    protonvpn: false
+    ros: false
+    ros2: false
+    signal: false
+    skype: false
+    spotify: false
+    slack: false
+    sublimetext: false
+    teams: false
+    vivaldi: false
+    vscode: false
+    winehq: false
+    # Debian
+    debian_nonfree: false
+    debian_contrib: false
+    # Ubuntu
+    ubuntu_universe: false
+    ubuntu_multiverse: true
+    ubuntu_restricted: false
+
+  # Flags
+  flags:
+    purge_enabled: true
+    preserve_debs: false
+
+  # Packages to purge
+  purge:
+    - gnome-mines
+    - rhythmbox
+    - thunderbird
+    - evolution
+  # PPA
+  ppa:
+    # With prefix ppa:
+    - ppa:yubico/stable
+    # No Prefix ppa:
+    - kicad/kicad-5.1-releases
+  # Install components
+  # APT Packages, Python Modules, Debian packages
+  install:
+    snaps:
+      - htop
+      - teams
+      - spotify
+      - ::candidate::vscode
+      - joplin-desktop
+      # Remote desktop client
+      - remmina
+    # Debian packages/.deb files
+    debs:
+      #- https://github.com/sharkdp/bat/releases/download/v0.17.1/bat_0.17.1_amd64.deb
+    binaries:
+      #- kubectl::https://storage.googleapis.com/kubernetes-release/release/v1.20.1/bin/linux/amd64/kubectl
+    apt:
+      # Admin related Stuff
+      administration:
+        - curl
+        - neofetch
+        - gnome-tweaks
+        - gnome-shell-extensions
+      # Security Related Stuff
+      security:
+      # Productivity & Office Tools.
+      productivity:
+        # Shell clipboard tool
+        - xclip
+      # Tools related to development.
+      development:
+        - git
+        # Python is required for PlatformIO
+        - python3-distutils
+      # Everything Else
+      other:
+        - less
+        # Font for bash
+        - fonts-powerline
+      external:
+        # MS fonts
+        - ttf-mscorefonts-installer
