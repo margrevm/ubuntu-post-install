@@ -17,8 +17,6 @@ Basic Ubuntu post-installation shell script to setup my OS. Feel free to fork an
 The first thing I do on a clean installation...
 
 ```sh
-wget https://raw.githubusercontent.com/margrevm/ubuntu-post-install/main/ubuntu-post-install.sh
-chmod +x ubuntu-postinstall.sh 
 ./ubuntu-postinstall.sh 
 ```
 
