@@ -7,8 +7,9 @@ Basic Ubuntu post-installation shell script to setup my OS. Feel free to fork an
 ## Features
 
 - 📂 Folder structure creation
-- 📦 Supports flatpak, snap, .deb and apt package installation
+- 📦 Supports snap, .deb and apt package installation
 - 🗑️ Cleaning of unnecessary packages and files
+- 📥 Cloning of git repositories
 - 🔧 Custom actions
 
 ## Running the script
