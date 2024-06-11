@@ -5,7 +5,7 @@
 # ---------------------------------------------------
 # Creating folder structure
 # ---------------------------------------------------
-echo "\n[Creating the folder structure]"
+echo "[Creating the folder structure]"
 
 CREATE_DIRS=(
 	$HOME/projects
@@ -18,7 +18,7 @@ mkdir -pv ${CREATE_DIRS[@]}
 # ---------------------------------------------------
 # APT package installation
 # ---------------------------------------------------
-echo "\n[Installing apt packages]"
+echo "[Installing apt packages]"
 
 APT_INSTALL_PACKAGES=(
 	tree
@@ -95,7 +95,7 @@ sudo apt autoclean -q
 # ---------------------------------------------------
 # Snap packages installation
 # ---------------------------------------------------
-echo "\n[Installing snap packages]"
+echo "[Installing snap packages]"
 # Important: Install 'snapd' to support snap packages (available as apt package).
 # Snap is not natively supported by Pop!_OS. The usage of flatpak is recommended.
 SNAP_INSTALL_PACKAGES=(
@@ -112,7 +112,7 @@ snap install ${SNAP_INSTALL_PACKAGES[@]}
 # ---------------------------------------------------
 # .deb packages installation (manual)
 # ---------------------------------------------------
-#echo "\n[Downloading and installing .deb packages manually]"
+#echo "[Downloading and installing .deb packages manually]"
 
 #echo "➜ Downloading .deb packages..."
 #DL_DIR=$HOME/Downloads/packages
@@ -126,12 +126,12 @@ snap install ${SNAP_INSTALL_PACKAGES[@]}
 # ---------------------------------------------------
 # Other packages installation (full manual installation)
 # ---------------------------------------------------
-#echo "\n[Other packages]"
+#echo "[Other packages]"
 
 # ---------------------------------------------------
 # Third-party drivers (Nvidia)
 # ---------------------------------------------------
-#echo "\n[Drivers]"
+#echo "[Drivers]"
 sudo ubuntu-drivers autoinstall
 
 # ---------------------------------------------------
@@ -147,7 +147,7 @@ sudo fc-cache -f
 # Gnome settings
 # ---------------------------------------------------
 # This really depends on your preferences :-)
-echo "\n[Applying Gnome settings]"
+echo "[Applying Gnome settings]"
 
 # Gnome windows:
 # When you click an icon in the launcher, it opens the application. But, you cannot minimize it by clicking it again. This can be changed with the following command.
@@ -163,7 +163,7 @@ gsettings set org.gnome.gedit.preferences.editor insert-spaces true
 # ---------------------------------------------------
 # Clone git repos
 # ---------------------------------------------------
-echo "\n[Cloning git repos]"
+echo "[Cloning git repos]"
 
 # Go target directory
 cd $HOME/scripts
@@ -174,7 +174,7 @@ cd $HOME/scripts
 # Summary
 # ---------------------------------------------------
 neofetch
-echo "\n[Installation completed!]"
+echo "[Installation completed!]"
 cd $HOME
 
 # Reminders
