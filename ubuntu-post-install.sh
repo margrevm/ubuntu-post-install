@@ -5,7 +5,7 @@
 # ---------------------------------------------------
 # Creating folder structure
 # ---------------------------------------------------
-echo "[Creating the folder structure]"
+echo "\n[Creating the folder structure]"
 
 CREATE_DIRS=(
 	$HOME/projects
@@ -18,7 +18,7 @@ mkdir -pv ${CREATE_DIRS[@]}
 # ---------------------------------------------------
 # APT package installation
 # ---------------------------------------------------
-echo "[Installing apt packages]"
+echo "\n[Installing apt packages]"
 
 APT_INSTALL_PACKAGES=(
 	tree
@@ -27,7 +27,6 @@ APT_INSTALL_PACKAGES=(
 	htop
 	gnome-tweaks
 	python3
-	python3-distutils
 	nmap
 	wget
 	default-jdk
@@ -38,8 +37,7 @@ APT_INSTALL_PACKAGES=(
 	unzip
 	xclip
 	less
-  ubuntu-restricted-extras
-	code
+  	ubuntu-restricted-extras
 )
 
 # Danger zone /!\ Please be careful and make sure to not purge/remove any essential packages
@@ -95,14 +93,15 @@ sudo apt autoclean -q
 # ---------------------------------------------------
 # Snap packages installation
 # ---------------------------------------------------
-echo "[Installing snap packages]"
+echo "\n[Installing snap packages]"
 # Important: Install 'snapd' to support snap packages (available as apt package).
 # Snap is not natively supported by Pop!_OS. The usage of flatpak is recommended.
 SNAP_INSTALL_PACKAGES=(
-	bw
+  bw
   spotify
   joplin-desktop
   whatsapp-for-linux
+  code
 )
 
 echo "➜ Install snap packages..."
@@ -114,7 +113,7 @@ snap update
 # ---------------------------------------------------
 # .deb packages installation (manual)
 # ---------------------------------------------------
-#echo "[Downloading and installing .deb packages manually]"
+#echo "\n[Downloading and installing .deb packages manually]"
 
 #echo "➜ Downloading .deb packages..."
 #DL_DIR=$HOME/Downloads/packages
@@ -128,12 +127,12 @@ snap update
 # ---------------------------------------------------
 # Other packages installation (full manual installation)
 # ---------------------------------------------------
-#echo "[Other packages]"
+#echo "\n[Other packages]"
 
 # ---------------------------------------------------
 # Third-party drivers (Nvidia)
 # ---------------------------------------------------
-#echo "[Drivers]"
+#echo "\n[Drivers]"
 sudo ubuntu-drivers autoinstall
 
 # ---------------------------------------------------
@@ -149,7 +148,7 @@ sudo fc-cache -f
 # Gnome settings
 # ---------------------------------------------------
 # This really depends on your preferences :-)
-echo "[Applying Gnome settings]"
+echo "\n[Applying Gnome settings]"
 
 # Gnome windows:
 # When you click an icon in the launcher, it opens the application. But, you cannot minimize it by clicking it again. This can be changed with the following command.
@@ -165,7 +164,7 @@ gsettings set org.gnome.gedit.preferences.editor insert-spaces true
 # ---------------------------------------------------
 # Clone git repos
 # ---------------------------------------------------
-echo "[Cloning git repos]"
+echo "\n[Cloning git repos]"
 
 # Go target directory
 cd $HOME/scripts
@@ -176,7 +175,7 @@ git clone https://github.com/margrevm/ubuntu-post-install
 # Summary
 # ---------------------------------------------------
 neofetch
-echo "[Installation completed!]"
+echo "\n[Installation completed!]"
 cd $HOME
 
 # Reminders
