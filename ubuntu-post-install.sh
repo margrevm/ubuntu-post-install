@@ -169,7 +169,7 @@ echo "\n[Cloning git repos]"
 
 # Go target directory
 cd $HOME/scripts
-git clone https://github.com/margrevm/ubuntu-post-install
+#git clone https://github.com/margrevm/ubuntu-post-install
 
 
 # ---------------------------------------------------
