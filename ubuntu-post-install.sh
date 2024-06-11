@@ -109,6 +109,9 @@ SNAP_INSTALL_PACKAGES=(
 echo "➜ Install snap packages..."
 snap install ${SNAP_INSTALL_PACKAGES[@]}
 
+echo "➜ Updating (refreshing) snap packages..."
+snap refresh
+
 # ---------------------------------------------------
 # .deb packages installation (manual)
 # ---------------------------------------------------
