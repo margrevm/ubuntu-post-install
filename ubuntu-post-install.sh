@@ -27,6 +27,7 @@ APT_INSTALL_PACKAGES=(
 	htop
 	gnome-tweaks
 	python3
+ 	python3-pip
 	nmap
 	wget
 	default-jdk
