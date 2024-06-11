@@ -39,6 +39,7 @@ APT_INSTALL_PACKAGES=(
 	xclip
 	less
   	ubuntu-restricted-extras
+   	gedit
 )
 
 # Danger zone /!\ Please be careful and make sure to not purge/remove any essential packages
@@ -107,9 +108,6 @@ SNAP_INSTALL_PACKAGES=(
 
 echo "➜ Install snap packages..."
 snap install ${SNAP_INSTALL_PACKAGES[@]}
-
-echo "➜ Update snap packages..."
-snap update
 
 # ---------------------------------------------------
 # .deb packages installation (manual)
