@@ -164,13 +164,25 @@ gsettings set org.gnome.gedit.preferences.editor tabs-size 4
 gsettings set org.gnome.gedit.preferences.editor insert-spaces true
 
 # ---------------------------------------------------
+# Create SSH key
+#----------------------------------------------------
+ssh-keygen -t rsa -b 4096 -C "mike.margreve@outlook.com"
+ssh-add ~/.ssh/id_rsa
+
+# copy key to clipboard
+xclip -sel clip < ~/.ssh/id_rsa.pub
+
+# open github to configure key
+firefox https://github.com/settings/ssh/new
+
+# ---------------------------------------------------
 # Clone git repos
 # ---------------------------------------------------
 echo "[Cloning git repos]"
 
 # Go target directory
 cd $HOME/scripts
-#git clone https://github.com/margrevm/ubuntu-post-install
+git clone git@github.com:margrevm/ubuntu-post-install.git
 
 
 # ---------------------------------------------------
@@ -179,7 +191,3 @@ cd $HOME/scripts
 neofetch
 echo "[Installation completed!]"
 cd $HOME
-
-# Reminders
-# open github website to remind me to set up github
-# firefox https://github.com
