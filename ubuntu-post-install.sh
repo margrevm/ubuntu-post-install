@@ -193,6 +193,7 @@ gsettings set org.gnome.gedit.preferences.editor insert-spaces true
 # ---------------------------------------------------
 # Create SSH key
 #----------------------------------------------------
+echo "[Create SSH key]"
 ssh-keygen -t rsa -b 4096 -C "mike.margreve@outlook.com"
 ssh-add ~/.ssh/id_rsa
 
@@ -200,6 +201,7 @@ ssh-add ~/.ssh/id_rsa
 xclip -sel clip < ~/.ssh/id_rsa.pub
 
 # open github to configure key
+echo "Now paste the new ssh key in your Github configuration..."
 firefox https://github.com/settings/ssh/new
 
 # ---------------------------------------------------
