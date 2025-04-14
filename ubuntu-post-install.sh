@@ -15,6 +15,21 @@ CREATE_DIRS=(
 
 mkdir -pv ${CREATE_DIRS[@]}
 
+REMOVE_DIRS=(
+	$HOME/Templates
+	$HOME/Music
+	$HOME/Videos
+	$HOME/Public
+)
+
+rmdir -v ${REMOVE_DIRS[@]}
+
+# ---------------------------------------------------
+# Symbolic links
+# ---------------------------------------------------
+# Ubuntu SMB mounted folders
+ln -si /run/user/$UID/gvfs/ $HOME/smb
+
 # ---------------------------------------------------
 # APT package installation
 # ---------------------------------------------------
@@ -105,6 +120,12 @@ SNAP_INSTALL_PACKAGES=(
   whatsapp-for-linux
   code
 )
+
+SNAP_REMOVE_PACKAGES=(
+)
+
+echo "➜ Remove snap packages..."
+snap remove ${SNAP_REMOVE_PACKAGES[@]}
 
 echo "➜ Install snap packages..."
 snap install ${SNAP_INSTALL_PACKAGES[@]}
