@@ -211,6 +211,18 @@ echo "[Cloning git repos]"
 cd $HOME/scripts
 git clone git@github.com:margrevm/ubuntu-post-install.git
 
+# ---------------------------------------------------
+# Overwrite 'gnu stow'ed dotfiles from Git repo
+# ---------------------------------------------------
+git clone git@github.com:margrevm/dotfiles.git
+
+# stow dotfiles
+stow -d "$HOME/scripts/dotfiles" -t "$HOME" . --adopt
+
+#Revert dotfiles from git repo
+cd dotfiles
+git --reset hard
+
 
 # ---------------------------------------------------
 # Summary
