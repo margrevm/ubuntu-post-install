@@ -55,6 +55,12 @@ APT_INSTALL_PACKAGES=(
 	less
   	ubuntu-restricted-extras
    	gedit
+	libreoffice
+	preload
+	simple-scan
+	drawing
+	snapshot
+	stow
 )
 
 # Danger zone /!\ Please be careful and make sure to not purge/remove any essential packages
