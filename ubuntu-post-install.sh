@@ -112,7 +112,21 @@ sudo apt autoclean -q
 # ---------------------------------------------------
 # Flatpack packages installation
 # ---------------------------------------------------
-# Not supported by Ubuntu by default
+echo "[Installing flatpak packages]"
+
+FLATPAK_INSTALL_PACKAGES=(
+	com.stremio.Stremio
+)
+
+echo "➜ Add flatpak repositories..."
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+echo "➜ Install flatpak packages..."
+# By default flatpak packages will be installed system wide.
+flatpak install --system ${FLATPAK_INSTALL_PACKAGES[@]}
+
+echo "➜ Udate flatpak packages..."
+flatpak update
 
 # ---------------------------------------------------
 # Snap packages installation
