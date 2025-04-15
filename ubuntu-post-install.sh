@@ -41,6 +41,7 @@ APT_INSTALL_PACKAGES=(
 	vlc
 	htop
 	gnome-tweaks
+	gnome-shell-extension-manager
 	python3
  	python3-pip
 	nmap
@@ -111,7 +112,7 @@ sudo apt autoclean -q
 # ---------------------------------------------------
 # Flatpack packages installation
 # ---------------------------------------------------
-# Not supported by default
+# Not supported by Ubuntu by default
 
 # ---------------------------------------------------
 # Snap packages installation
