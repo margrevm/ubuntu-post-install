@@ -62,6 +62,9 @@ APT_INSTALL_PACKAGES=(
 	drawing
 	snapshot
 	stow
+	colordiff
+	vim
+	net-tools
 )
 
 # Danger zone /!\ Please be careful and make sure to not purge/remove any essential packages
