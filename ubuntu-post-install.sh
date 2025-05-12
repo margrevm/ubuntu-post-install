@@ -68,6 +68,7 @@ APT_INSTALL_PACKAGES=(
 	wine
 	wine32:i386
 	lutris
+	batcat
 )
 
 # Danger zone /!\ Please be careful and make sure to not purge/remove any essential packages
