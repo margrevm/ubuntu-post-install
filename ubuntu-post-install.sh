@@ -65,6 +65,9 @@ APT_INSTALL_PACKAGES=(
 	colordiff
 	vim
 	net-tools
+	wine
+	wine32:i386
+	lutris
 )
 
 # Danger zone /!\ Please be careful and make sure to not purge/remove any essential packages
