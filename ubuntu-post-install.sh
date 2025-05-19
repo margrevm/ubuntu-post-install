@@ -37,7 +37,7 @@ echo "[Installing apt packages]"
 
 APT_INSTALL_PACKAGES=(
 	tree
-	neofetch
+	fastfetch
 	vlc
 	htop
 	gnome-tweaks
@@ -80,8 +80,8 @@ APT_PURGE_PACKAGES=(
 APT_REMOVE_PACKAGES=(
 )
 
-#echo "➜ Adding apt repositories..."
-# Nothing yet
+echo "➜ Adding apt repositories..."
+sudo add-apt-repository  ppa:zhangsongcui3371/fastfetch 
 
 echo "➜ Updating apt repositories..."
 sudo apt update -yq
