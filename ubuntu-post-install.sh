@@ -1,6 +1,11 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-# Post-installation script for Ubuntu 24.04
+## Post-installation script for Ubuntu 24.04
+##
+## Copyright (C) 2025 Mike Margreve (mike.margreve@outlook.com)
+## Permission to copy and modify is granted under the MIT license
+##
+## Usage: ubuntu-post-install [no arguments]
 
 # ---------------------------------------------------
 # Creating folder structure
