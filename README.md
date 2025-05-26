@@ -17,6 +17,7 @@ Basic Ubuntu post-installation shell script to setup my OS. Feel free to fork an
 The first thing I do on a clean installation...
 
 ```sh
+chmod +x update.sh
 ./ubuntu-postinstall.sh 
 ```
 
@@ -26,4 +27,4 @@ The first thing I do on a clean installation...
 
 ## Credits
 
-By Mike Margreve (mike.margreve@outlook.com) and licensed under MIT. The original source can be found here: https://github.com/margrevm/kubuntu-post-install
+By Mike Margreve (mike.margreve@outlook.com) and licensed under MIT. The original source can be found here: https://github.com/margrevm/ubuntu-post-install
