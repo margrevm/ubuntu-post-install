@@ -69,6 +69,7 @@ APT_INSTALL_PACKAGES=(
 	wine32:i386
 	lutris
 	batcat
+	flatpak
 )
 
 # Danger zone /!\ Please be careful and make sure to not purge/remove any essential packages
