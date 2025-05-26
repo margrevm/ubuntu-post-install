@@ -184,7 +184,7 @@ snap refresh
 # Third-party drivers (Nvidia)
 # ---------------------------------------------------
 #echo "[Drivers]"
-sudo ubuntu-drivers autoinstall
+sudo ubuntu-drivers install
 
 # ---------------------------------------------------
 # Custom actions
