@@ -237,13 +237,15 @@ firefox https://github.com/settings/ssh/new
 # ---------------------------------------------------
 echo "[Cloning git repos]"
 
-# Go target directory
 cd $HOME/scripts
 git clone git@github.com:margrevm/ubuntu-post-install.git
+git clone git@github.com:margrevm/ubuntu-update.git
+git clone git@github.com:margrevm/ubuntu-cleanup.git
 
 # ---------------------------------------------------
 # Overwrite 'gnu stow'ed dotfiles from Git repo
 # ---------------------------------------------------
+cd $HOME/scripts
 git clone git@github.com:margrevm/dotfiles.git
 
 # stow dotfiles
