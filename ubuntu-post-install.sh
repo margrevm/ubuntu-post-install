@@ -187,9 +187,11 @@ snap refresh
 #echo "[Other packages]"
 
 # ---------------------------------------------------
-# Third-party drivers (Nvidia)
+# Third-party drivers (Nvidia, ...)
 # ---------------------------------------------------
-#echo "[Drivers]"
+echo "[Drivers]"
+
+echo "➜ Updating drivers..."
 sudo ubuntu-drivers install
 
 # ---------------------------------------------------
