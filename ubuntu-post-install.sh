@@ -219,6 +219,9 @@ gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
 gsettings set org.gnome.gedit.preferences.editor display-line-numbers true
 gsettings set org.gnome.gedit.preferences.editor tabs-size 4
 gsettings set org.gnome.gedit.preferences.editor insert-spaces true
+# Set mutter (gnome window manager) to a higher value to avoid "programm not responding" issues with steam
+# Default is 3000 (3 seconds), setting it to 15000 (15 seconds
+gsettings set org.gnome.mutter check-alive-timeout 15000
 
 # ---------------------------------------------------
 # Create SSH key
