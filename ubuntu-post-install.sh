@@ -77,6 +77,7 @@ APT_INSTALL_PACKAGES=(
 	flatpak
 	xournal
 	pdfarranger
+	ttf-mscorefonts-installer
 )
 
 # Danger zone /!\ Please be careful and make sure to not purge/remove any essential packages
