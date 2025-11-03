@@ -75,6 +75,8 @@ APT_INSTALL_PACKAGES=(
 	lutris
 	batcat
 	flatpak
+	xournal
+	pdfarranger
 )
 
 # Danger zone /!\ Please be careful and make sure to not purge/remove any essential packages
