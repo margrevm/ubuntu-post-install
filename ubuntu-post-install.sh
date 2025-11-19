@@ -156,6 +156,8 @@ SNAP_INSTALL_PACKAGES=(
   joplin-desktop
   whatsapp-for-linux
   code
+  bitwarden
+  discord
 )
 
 SNAP_REMOVE_PACKAGES=(
@@ -187,7 +189,16 @@ snap refresh
 # ---------------------------------------------------
 # Other packages installation (full manual installation)
 # ---------------------------------------------------
-#echo "[Other packages]"
+echo "[Other packages]"
+
+echo "➜ Installing DaVinci Resolve..."
+cd $HOME/scripts
+git clone git@github.com:margrevm/davinci-resolve-studio-installer-ubuntu.git
+chmod +x davinci-resolve-studio-installer-ubuntu/TK_resolve_installer.sh
+./davinci-resolve-studio-installer-ubuntu/TK_resolve_installer.sh
+
+echo "➜ Installing Tailscale..."
+curl -fsSL https://tailscale.com/install.sh | sh
 
 # ---------------------------------------------------
 # Third-party drivers (Nvidia, ...)
