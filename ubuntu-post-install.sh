@@ -5,9 +5,30 @@
 ## Copyright (C) 2025 Mike Margreve (mike.margreve@outlook.com)
 ## Permission to copy and modify is granted under the MIT license
 ##
-## Usage: ubuntu-post-install [no arguments]
+## Usage: ubuntu-post-install.sh <settings-file>
+## The settings file (ubuntu-settings.rc) must be provided as the first argument
+## It defines arrays like CREATE_DIRS, REMOVE_DIRS, APT_INSTALL_PACKAGES, etc.
 
-source ./ubuntu-settings.rc
+if [[ "$1" == "-h" || "$1" == "--help" ]]; then
+    echo "Usage: $0 <settings-file>"
+    exit 0
+fi
+
+SETTINGS_FILE="$1"
+
+if [ -z "$SETTINGS_FILE" ]; then
+    printf '\033[0;31mError\033[0m: settings file not provided.\n'
+    echo "Usage: $0 <settings-file>"
+    exit 1
+fi
+
+if [ ! -f "$SETTINGS_FILE" ]; then
+    printf '\033[0;31mError\033[0m: settings file '\''%s'\'' not found.\n' "$SETTINGS_FILE"
+    exit 1
+fi
+
+# Load configuration (arrays and variables) from provided settings file
+source "$SETTINGS_FILE"
 
 # ---------------------------------------------------
 # Creating folder structure
