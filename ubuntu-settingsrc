@@ -1,0 +1,104 @@
+#!/bin/bash
+
+# ---------------------------------------------------
+# Creating folder structure
+# ---------------------------------------------------
+# Folders to create
+CREATE_DIRS=(
+	$HOME/projects
+	$HOME/scripts
+	$HOME/src
+	$HOME/tmp
+)
+
+# Folders to remove
+REMOVE_DIRS=(
+	$HOME/Templates
+	$HOME/Music
+	$HOME/Videos
+	$HOME/Public
+)
+
+# ---------------------------------------------------
+# Symbolic links
+# ---------------------------------------------------
+# SMB mounted folders
+ln -si /run/user/$UID/gvfs/ $HOME/smb
+
+# ---------------------------------------------------
+# APT package installation
+# ---------------------------------------------------
+# Packages to install via apt
+APT_INSTALL_PACKAGES=(
+	tree
+	fastfetch
+	htop
+	gnome-tweaks
+	gnome-shell-extension-manager
+	python3
+ 	python3-pip
+	nmap
+	wget
+	default-jdk
+	default-jre
+	heif-gdk-pixbuf
+	git
+	curl
+	unzip
+	xclip
+	less
+  	ubuntu-restricted-extras
+   	gedit
+	libreoffice
+	preload
+	simple-scan
+	drawing
+	snapshot
+	stow
+	colordiff
+	vim
+	net-tools
+	wine
+	wine32:i386
+	lutris
+	batcat
+	flatpak
+	xournal
+	pdfarranger
+	ttf-mscorefonts-installer
+	chromium-browser
+)
+
+# Packages to purge via apt
+# Danger zone /!\ Please be careful and make sure to not purge/remove any essential packages
+APT_PURGE_PACKAGES=(
+	geary
+	gnome-contacts
+)
+
+# Packages to remove via apt
+APT_REMOVE_PACKAGES=(
+)
+
+# ---------------------------------------------------
+# Snap packages installation
+# ---------------------------------------------------
+SNAP_INSTALL_PACKAGES=(
+  bw
+  spotify
+  joplin-desktop
+  whatsapp-for-linux
+  code
+  bitwarden
+  discord
+)
+
+SNAP_REMOVE_PACKAGES=(
+)
+
+# ---------------------------------------------------
+# Flatpack packages installation
+# ---------------------------------------------------
+FLATPAK_INSTALL_PACKAGES=(
+	com.stremio.Stremio
+)

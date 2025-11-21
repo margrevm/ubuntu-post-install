@@ -7,87 +7,20 @@
 ##
 ## Usage: ubuntu-post-install [no arguments]
 
+source ./ubuntu-settings.rc
+
 # ---------------------------------------------------
 # Creating folder structure
 # ---------------------------------------------------
 echo "[Creating the folder structure]"
 
-CREATE_DIRS=(
-	$HOME/projects
-	$HOME/scripts
-	$HOME/src
-)
-
 mkdir -pv ${CREATE_DIRS[@]}
-
-REMOVE_DIRS=(
-	$HOME/Templates
-	$HOME/Music
-	$HOME/Videos
-	$HOME/Public
-)
-
 rmdir -v ${REMOVE_DIRS[@]}
-
-# ---------------------------------------------------
-# Symbolic links
-# ---------------------------------------------------
-# Ubuntu SMB mounted folders
-ln -si /run/user/$UID/gvfs/ $HOME/smb
 
 # ---------------------------------------------------
 # APT package installation
 # ---------------------------------------------------
 echo "[Installing apt packages]"
-
-APT_INSTALL_PACKAGES=(
-	tree
-	fastfetch
-	vlc
-	htop
-	gnome-tweaks
-	gnome-shell-extension-manager
-	python3
- 	python3-pip
-	nmap
-	wget
-	default-jdk
-	default-jre
-	heif-gdk-pixbuf
-	git
-	curl
-	unzip
-	xclip
-	less
-  	ubuntu-restricted-extras
-   	gedit
-	libreoffice
-	preload
-	simple-scan
-	drawing
-	snapshot
-	stow
-	colordiff
-	vim
-	net-tools
-	wine
-	wine32:i386
-	lutris
-	batcat
-	flatpak
-	xournal
-	pdfarranger
-	ttf-mscorefonts-installer
-)
-
-# Danger zone /!\ Please be careful and make sure to not purge/remove any essential packages
-APT_PURGE_PACKAGES=(
-	geary
-	gnome-contacts
-)
-
-APT_REMOVE_PACKAGES=(
-)
 
 echo "➜ Adding apt repositories..."
 sudo add-apt-repository  ppa:zhangsongcui3371/fastfetch 
@@ -130,10 +63,6 @@ sudo apt autoclean -q
 # ---------------------------------------------------
 echo "[Installing flatpak packages]"
 
-FLATPAK_INSTALL_PACKAGES=(
-	com.stremio.Stremio
-)
-
 echo "➜ Add flatpak repositories..."
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
@@ -150,18 +79,6 @@ flatpak update
 echo "[Installing snap packages]"
 # Important: Install 'snapd' to support snap packages (available as apt package).
 # Snap is not natively supported by Pop!_OS. The usage of flatpak is recommended.
-SNAP_INSTALL_PACKAGES=(
-  bw
-  spotify
-  joplin-desktop
-  whatsapp-for-linux
-  code
-  bitwarden
-  discord
-)
-
-SNAP_REMOVE_PACKAGES=(
-)
 
 echo "➜ Remove snap packages..."
 snap remove ${SNAP_REMOVE_PACKAGES[@]}
