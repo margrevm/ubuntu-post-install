@@ -1,46 +1,101 @@
 #!/bin/bash
 
-## Post-installation script for Ubuntu 24.04
+## Post-installation script for Ubuntu 25.10
 ##
-## Copyright (C) 2025 Mike Margreve (mike.margreve@outlook.com)
+## Copyright (C) 2026 Mike Margreve (mike.margreve@outlook.com)
 ## Permission to copy and modify is granted under the MIT license
 ##
-## Usage: ubuntu-post-install.sh <settings-file>
-## The settings file (ubuntu-settings.rc) must be provided as the first argument
-## It defines arrays like CREATE_DIRS, REMOVE_DIRS, APT_INSTALL_PACKAGES, etc.
-
-if [[ "$1" == "-h" || "$1" == "--help" ]]; then
-    echo "Usage: $0 <settings-file>"
-    exit 0
-fi
-
-SETTINGS_FILE="$1"
-
-if [ -z "$SETTINGS_FILE" ]; then
-    printf '\033[0;31mError\033[0m: settings file not provided.\n'
-    echo "Usage: $0 <settings-file>"
-    exit 1
-fi
-
-if [ ! -f "$SETTINGS_FILE" ]; then
-    printf '\033[0;31mError\033[0m: settings file '\''%s'\'' not found.\n' "$SETTINGS_FILE"
-    exit 1
-fi
-
-# Load configuration (arrays and variables) from provided settings file
-source "$SETTINGS_FILE"
+## Usage: ubuntu-post-install.sh
 
 # ---------------------------------------------------
 # Creating folder structure
 # ---------------------------------------------------
+# Folders to create
+CREATE_DIRS=(
+	$HOME/projects
+	$HOME/scripts
+	$HOME/src
+	$HOME/tmp
+)
+
+# Folders to remove
+REMOVE_DIRS=(
+	$HOME/Templates
+	$HOME/Music
+	$HOME/Videos
+	$HOME/Public
+)
+
 printf '\033[1;32m[Creating the folder structure]\033[0m\n'
 
 mkdir -pv "${CREATE_DIRS[@]}"
 rmdir -v "${REMOVE_DIRS[@]}"
 
 # ---------------------------------------------------
+# Symbolic links
+# ---------------------------------------------------
+# SMB mounted folders
+ln -si /run/user/$UID/gvfs/ $HOME/smb
+
+# ---------------------------------------------------
 # APT package installation
 # ---------------------------------------------------
+# Packages to install via apt
+APT_INSTALL_PACKAGES=(
+	tree
+	fastfetch
+	htop
+	gnome-tweaks
+	gnome-shell-extension-manager
+	gnome-shell-extension-gsconnect
+	python3
+ 	python3-pip
+	code
+	nmap
+	wget
+	default-jdk
+	default-jre
+	heif-gdk-pixbuf
+	git
+	curl
+	unzip
+	xclip
+	less
+  	ubuntu-restricted-extras
+   	gedit
+	libreoffice
+	preload
+	simple-scan
+	drawing
+	snapshot
+	stow
+	colordiff
+	vim
+	net-tools
+	wine
+	wine32:i386
+	lutris
+	batcat
+	flatpak
+	xournal
+	pdfarranger
+	ttf-mscorefonts-installer
+	chromium-browser
+	tailscale
+	steam
+)
+
+# Packages to purge via apt
+# Danger zone /!\ Please be careful and make sure to not purge/remove any essential packages
+APT_PURGE_PACKAGES=(
+	geary
+	gnome-contacts
+)
+
+# Packages to remove via apt
+APT_REMOVE_PACKAGES=(
+)
+
 printf '\033[1;32m[Installing apt packages]\033[0m\n'
 
 printf '\033[0;32m➜ Adding apt repositories...\033[0m\n'
@@ -60,18 +115,12 @@ echo "deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microsoft.gpg] \
 https://packages.microsoft.com/repos/code stable main" \
 | sudo tee /etc/apt/sources.list.d/vscode.list
 
-# ---------------------------------------------------
-
 printf '\033[0;32m➜ Updating apt repositories...\033[0m\n'
 sudo apt update -yq
-
-# ---------------------------------------------------
 
 printf '\033[0;32m➜ Installing packages...\033[0m\n'
 # Existing packages will not be installed by apt.
 sudo apt install -yq ${APT_INSTALL_PACKAGES[@]}
-
-# ---------------------------------------------------
 
 printf '\033[0;32m➜ Purging/removing apt packages...\033[0m\n'
 # This will remove the package and the configuration files (/etc)
@@ -80,13 +129,9 @@ printf '\033[0;32m➜ Purging/removing apt packages...\033[0m\n'
 sudo apt purge -yq ${APT_PURGE_PACKAGES[@]}
 #sudo apt remove ${APT_REMOVE_PACKAGES[@]}
 
-# ---------------------------------------------------
-
 printf '\033[0;32m➜ Removing unused apt package dependencies...\033[0m\n'
 # ... packages that are not longer needed
 sudo apt autoremove -yq
-
-# ---------------------------------------------------
 
 printf '\033[0;32m➜ Upgrading apt packages to their latest version...\033[0m\n'
 # 'apt full-upgrade' is an enhanced version of the 'apt upgrade' command. 
@@ -95,8 +140,6 @@ printf '\033[0;32m➜ Upgrading apt packages to their latest version...\033[0m\n
 # resolution feature that ensures that critical packages are upgraded first 
 # at the expense of those considered of a lower priority.
 sudo apt full-upgrade -yq
-
-# ---------------------------------------------------
 
 printf '\033[0;32m➜ Cleaning package cache...\033[0m\n'
 # 'apt autoclean' removes all stored archives in your cache for packages that can not 
@@ -108,6 +151,16 @@ sudo apt autoclean -yq
 # ---------------------------------------------------
 # Flatpak packages installation
 # ---------------------------------------------------
+FLATPAK_INSTALL_PACKAGES=(
+	com.bitwarden.desktop
+	com.stremio.Stremio
+	com.spotify.Client
+	org.mozilla.firefox
+	com.meetfranz.Franz # Whatsapp client
+	com.discordapp.Discord
+	net.cozic.joplin_desktop 
+)
+
 printf '\033[1;32m[Installing flatpak packages]\033[0m\n'
 
 printf '\033[0;32m➜ Add flatpak repositories...\033[0m\n'
@@ -123,6 +176,13 @@ flatpak update
 # ---------------------------------------------------
 # Snap packages installation
 # ---------------------------------------------------
+SNAP_INSTALL_PACKAGES=(
+)
+
+SNAP_REMOVE_PACKAGES=(
+	firefox	# Remove Firefox as it does not use H/W acceleration on Ubuntu as snap package
+)
+
 printf '\033[1;32m[Installing snap packages]\033[0m\n'
 # Important: Install 'snapd' to support snap packages (available as apt package).
 # Snap is not natively supported by Pop!_OS. The usage of flatpak is recommended.
