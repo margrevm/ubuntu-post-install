@@ -45,6 +45,20 @@ printf '\033[1;32m[Installing apt packages]\033[0m\n'
 
 printf '\033[0;32m➜ Adding apt repositories...\033[0m\n'
 sudo add-apt-repository ppa:zhangsongcui3371/fastfetch
+# VS code repo
+# Download Microsoft's GPG signing key, convert it to a keyring format,
+# and store it in a system-wide trusted location
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc \
+  | gpg --dearmor \
+  | sudo tee /usr/share/keyrings/packages.microsoft.gpg > /dev/null
+
+# Add the Visual Studio Code APT repository
+# - arch=amd64 restricts the repo to x86_64 systems
+# - signed-by ensures APT only trusts packages signed with this key
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microsoft.gpg] \
+https://packages.microsoft.com/repos/code stable main" \
+| sudo tee /etc/apt/sources.list.d/vscode.list
+
 
 printf '\033[0;32m➜ Updating apt repositories...\033[0m\n'
 sudo apt update -yq

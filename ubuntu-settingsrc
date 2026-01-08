@@ -35,8 +35,10 @@ APT_INSTALL_PACKAGES=(
 	htop
 	gnome-tweaks
 	gnome-shell-extension-manager
+	gnome-shell-extension-gsconnect
 	python3
  	python3-pip
+	code
 	nmap
 	wget
 	default-jdk
@@ -67,6 +69,8 @@ APT_INSTALL_PACKAGES=(
 	pdfarranger
 	ttf-mscorefonts-installer
 	chromium-browser
+	tailscale
+	steam
 )
 
 # Packages to purge via apt
@@ -84,21 +88,21 @@ APT_REMOVE_PACKAGES=(
 # Snap packages installation
 # ---------------------------------------------------
 SNAP_INSTALL_PACKAGES=(
-  bw
-  spotify
-  joplin-desktop
-  whatsapp-for-linux
-  code
-  bitwarden
-  discord
 )
 
 SNAP_REMOVE_PACKAGES=(
+	firefox	# Remove Firefox as it does not use H/W acceleration on Ubuntu as snap package
 )
 
 # ---------------------------------------------------
 # Flatpack packages installation
 # ---------------------------------------------------
 FLATPAK_INSTALL_PACKAGES=(
+	com.bitwarden.desktop
 	com.stremio.Stremio
+	com.spotify.Client
+	org.mozilla.firefox
+	com.meetfranz.Franz # Whatsapp client
+	com.discordapp.Discord
+	net.cozic.joplin_desktop 
 )
