@@ -44,8 +44,9 @@ rmdir -v "${REMOVE_DIRS[@]}"
 printf '\033[1;32m[Installing apt packages]\033[0m\n'
 
 printf '\033[0;32m➜ Adding apt repositories...\033[0m\n'
-sudo add-apt-repository ppa:zhangsongcui3371/fastfetch
-# VS code repo
+
+sudo add-apt-repository ppa:zhangsongcui3371/fastfetch # Adding fastfetch PPA repository
+
 # Download Microsoft's GPG signing key, convert it to a keyring format,
 # and store it in a system-wide trusted location
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc \
@@ -59,13 +60,18 @@ echo "deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microsoft.gpg] \
 https://packages.microsoft.com/repos/code stable main" \
 | sudo tee /etc/apt/sources.list.d/vscode.list
 
+# ---------------------------------------------------
 
 printf '\033[0;32m➜ Updating apt repositories...\033[0m\n'
 sudo apt update -yq
 
+# ---------------------------------------------------
+
 printf '\033[0;32m➜ Installing packages...\033[0m\n'
 # Existing packages will not be installed by apt.
 sudo apt install -yq ${APT_INSTALL_PACKAGES[@]}
+
+# ---------------------------------------------------
 
 printf '\033[0;32m➜ Purging/removing apt packages...\033[0m\n'
 # This will remove the package and the configuration files (/etc)
@@ -74,9 +80,13 @@ printf '\033[0;32m➜ Purging/removing apt packages...\033[0m\n'
 sudo apt purge -yq ${APT_PURGE_PACKAGES[@]}
 #sudo apt remove ${APT_REMOVE_PACKAGES[@]}
 
+# ---------------------------------------------------
+
 printf '\033[0;32m➜ Removing unused apt package dependencies...\033[0m\n'
 # ... packages that are not longer needed
 sudo apt autoremove -yq
+
+# ---------------------------------------------------
 
 printf '\033[0;32m➜ Upgrading apt packages to their latest version...\033[0m\n'
 # 'apt full-upgrade' is an enhanced version of the 'apt upgrade' command. 
@@ -85,6 +95,8 @@ printf '\033[0;32m➜ Upgrading apt packages to their latest version...\033[0m\n
 # resolution feature that ensures that critical packages are upgraded first 
 # at the expense of those considered of a lower priority.
 sudo apt full-upgrade -yq
+
+# ---------------------------------------------------
 
 printf '\033[0;32m➜ Cleaning package cache...\033[0m\n'
 # 'apt autoclean' removes all stored archives in your cache for packages that can not 
