@@ -248,8 +248,9 @@ sudo fc-cache -f
 # Gnome settings
 # ---------------------------------------------------
 # This really depends on your preferences :-)
-echo "[Applying Gnome settings]"
+echo "[Gnome configuration]"
 
+printf '\033[0;32m➜ Applying Gnome settings...\033[0m\n'
 # Gnome windows:
 # When you click an icon in the launcher, it opens the application. But, you cannot minimize it by clicking it again. This can be changed with the following command.
 gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
@@ -262,6 +263,11 @@ gsettings set org.gnome.gedit.preferences.editor insert-spaces true
 # Set mutter (gnome window manager) to a higher value to avoid "programm not responding" issues with steam
 # Default is 3000 (3 seconds), setting it to 30000 (30 seconds)
 gsettings set org.gnome.mutter check-alive-timeout 30000
+
+printf '\033[0;32m➜ Configuring Gnome extensions...\033[0m\n'
+# Note: To enable Gnome extensions you might need to log out and log in again
+# Enable GSConnect extension
+gnome-extensions enable gsconnect@andyholmes.github.io
 
 # ---------------------------------------------------
 # Create SSH key
